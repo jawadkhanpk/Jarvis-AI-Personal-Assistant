@@ -1,5 +1,10 @@
+import time
+
 import pyttsx3
 import speech_recognition
+import requests
+from bs4 import BeautifulSoup
+import datetime
 
 engine = pyttsx3.init("sapi5")
 voices = engine.getProperty("voices")
@@ -60,6 +65,36 @@ if __name__ == "__main__":
                 elif "wikipedia" in query:
                     from SearchNow import  searchWikipedia
                     searchWikipedia(query)
+                elif "temperature" in query:
+                    search = "temperature in HAVEYLIYAA"
+                    url = f"https://www.google.com/search?q={search}"
+                    r = requests.get(url)
+                    data = BeautifulSoup(r.text,"html.parser")
+                    temp = data.find("div",class_ = "BNeawe").text
+                    speak(f"current{search} is {temp}")
+                elif "weather" in query:
+                    search = "weather in HAVEYLIYAA"        #this is the city of which we are checking weather
+                    url = f"https://www.google.com/search?q={search}"
+                    r = requests.get(url)
+                    data = BeautifulSoup(r.text,"html.parser")
+                    weather = data.find("div",class_ = "BNeawe").text
+                    speak(f"current{search} is {weather}")
+
+                elif "the time" in query:
+                    time1 = time.localtime()
+                    current_time = time.strftime("%H: %M", time1)
+                    current_time1 = int (time.strftime("%H", time1))
+                    current_time2 = time.strftime("%M", time1)
+
+                    if current_time1>=0 and current_time1<12:
+                        speak("The time is"+current_time+"AM")
+                    else:
+                        current_time = (current_time1) - (12)
+                        speak(f"The time is {current_time} {current_time2} PM")
+
+                elif "sleep finally" in query:
+                    speak("Going to sleep, sir")
+                    exit()
 
 
 
