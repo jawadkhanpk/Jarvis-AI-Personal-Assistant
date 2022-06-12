@@ -41,6 +41,26 @@ if __name__ == "__main__":
                     speak("Ok sir, You can call me anytime")
                     break
 
+                elif "hello" in query:
+                    speak("Hello sir, how are you?")
+                elif "i am fine" in query:
+                    speak("that's great, sir")
+                elif "how are you" in query:
+                    speak("Perfect, sir")
+                elif "thank you" in query:
+                    speak("you're welcome, sir")
+                elif "thanks" in query:
+                    speak("you're welcome, sir")
+                elif "google" in query:
+                    from SearchNow import searchGoogle
+                    searchGoogle(query)
+                elif "youtube" in query:
+                    from SearchNow import searchYoutube
+                    searchYoutube(query)
+                elif "wikipedia" in query:
+                    from SearchNow import  searchWikipedia
+                    searchWikipedia(query)
+
 
 
 
