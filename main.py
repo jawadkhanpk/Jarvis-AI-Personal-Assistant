@@ -56,6 +56,12 @@ if __name__ == "__main__":
                     speak("you're welcome, sir")
                 elif "thanks" in query:
                     speak("you're welcome, sir")
+                elif "open" in query:
+                    from DictApp import openwebapp
+                    openwebapp(query)
+                elif "close" in query:
+                    from DictApp import closewebapp
+                    closewebapp(query)
                 elif "google" in query:
                     from SearchNow import searchGoogle
                     searchGoogle(query)
